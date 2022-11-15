@@ -1,0 +1,24 @@
+[package]
+name = "hid_test"
+version = "0.1.0"
+authors = ["bjoernQ <bjoern.quentin@mobile-j.de>"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[profile.dev]
+opt-level = 3
+
+[dependencies]
+esp32s3-hal = { git = "https://github.com/esp-rs/esp-hal/", package = "esp32s3-hal" }
+esp-backtrace = { version = "0.2.0", features = ["esp32s3", "panic-handler", "print-uart"] }
+esp-println = {version = "0.3.0", features = ["esp32s3"] }
+xtensa-lx-rt = { version = "0.13.0", features = ["esp32s3"], optional = true }
+
+usbd-hid-device = "0.1.0"
+usbd-hid = "0.6.1"
+usb-device = "0.2.9"
+critical-section = "1.1.1"
+
+[features]
+default = ["rt"]
+rt = ["xtensa-lx-rt"]
